@@ -1,0 +1,64 @@
+{
+  "name": "@keiko-serverless/root",
+  "private": true,
+  "version": "1.0.0",
+  "license": "MIT",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build-all": "nx run-many --target=build --all --parallel=4",
+    "check-audit": "check-audit --yarn",
+    "deploy": "nx run-many --target=deploy --all --parallel=4",
+    "deploy-affected": "nx affected --target=deploy",
+    "graph": "nx dep-graph",
+    "info": "nx run-many --target=sls-info --all --parallel=4",
+    "lint-fix": "yarn linter-base-config --fix",
+    "lint-fix-all": "nx run-many --target=lint-fix-all --all --parallel=4",
+    "linter-base-config": "eslint",
+    "package": "nx run-many --target=package --all --parallel=4",
+    "postinstall": "husky install && syncpack format",
+    "resolve-audit": "resolve-audit --yarn",
+    "test": "nx run-many --target=test --all --parallel=4",
+    "test-affected": "nx affected --target=test",
+    "test-linter": "nx run-many --target=test-linter --all --parallel=4",
+    "test-type": "nx run-many --target=test-type --all --parallel=4",
+    "test-unit": "nx run-many --target=test-unit --all --parallel=4",
+    "watch": "nx run-many --target=watch --all  --parallel=4"
+  },
+  "dependencies": {
+    "dynamodb-toolbox": "^0.3.5"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^16.2.1",
+    "@commitlint/config-conventional": "^16.2.1",
+    "@nrwl/cli": "^13.8.3",
+    "@nrwl/tao": "^13.8.3",
+    "@nrwl/workspace": "^13.8.3",
+    "@types/jest": "^27.4.1",
+    "@typescript-eslint/eslint-plugin": "^5.12.1",
+    "@typescript-eslint/parser": "^5.12.1",
+    "aws-sdk": "^2.1080.0",
+    "eslint": "^8.9.0",
+    "eslint-config-prettier": "^8.4.0",
+    "eslint-import-resolver-typescript": "^2.5.0",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jest": "^26.1.1",
+    "eslint-plugin-prefer-arrow": "^1.2.3",
+    "eslint-plugin-prettier": "^4.0.0",
+    "husky": "^7.0.4",
+    "jest": "^27.5.1",
+    "lint-staged": "^12.3.4",
+    "lodash": "^4.17.21",
+    "npm-audit-resolver": "^3.0.0-6",
+    "prettier": "^2.5.1",
+    "serverless-iam-roles-per-function": "^3.2.0",
+    "syncpack": "^6.2.0",
+    "tsconfig-paths": "^3.11.0",
+    "typescript": "^4.5.5"
+  },
+  "engines": {
+    "node": "^14.18.1"
+  },
+  "packageManager": "yarn@3.1.1"
+}
